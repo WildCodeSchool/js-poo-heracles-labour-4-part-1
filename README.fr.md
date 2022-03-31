@@ -38,8 +38,9 @@ N'oublie pas ensuite de l'ajouter en bas de fichier *index.html* avec les autres
 
 - Maintenant, ajoute ce code sous ton instanciation d'`Arena`
 > const ArenaHTML = new ArenaTemplate('arena');
-> ArenaHTML.createArena(<< Mon instance d'Arena >>);
-Actualise : tu dois les voir sur une carte représentant ton arène et tes combattants dessus ! Modifies les coordonnées de chacun, ils doivent bouger en conséquence !
+ArenaHTML.createArena(<< Mon instance d'Arena >>);
+
+- Actualise : tu dois les voir sur une carte représentant ton arène et tes combattants dessus ! Modifies les coordonnées de chacun, ils doivent bouger en conséquence !
 
 ## Garder ses distances
 
