@@ -105,7 +105,7 @@ class ArenaTemplate extends TemplateRoot {
     arena.monsters.forEach(monster => {
       if (monster.x === i && monster.y === j) {
         img = `<img
-          title="Distance to ${arena.hero.name} ${arena.getDistance ? arena.getDistance(monster, arena.hero) : ""}" 
+          title="Distance to ${arena.hero.name} ${arena.getDistance ? arena.getDistance(monster, arena.hero) : ""}"
           alt="${monster.name}" src="${monster.image}"
           class="monster ${arena.isTouchable ? (arena.isTouchable(arena.hero, monster) ? 'touchable' : 'untouchable') : ""}"
         >`
@@ -133,4 +133,3 @@ class ArenaTemplate extends TemplateRoot {
     this.render(arenaTemplate)
   }
 }
-
