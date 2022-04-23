@@ -39,7 +39,7 @@ Attention, il faudra faire en sorte qu'il soit impossible de sortir de la carte,
 
 - Si le déplacement est valide, modifie les coordonnées du `Hero` pour qu'il se déplace à sa destination.
 
-- La fonction move() doit __nécessairement__ retourner les anciennes coordonnées du `Hero`, c'est à dire les coordonnées du `Hero` avant qu'il ne se déplace
+- La fonction `move()` doit __nécessairement__ retourner les anciennes coordonnées du `Hero`, c'est à dire les coordonnées du `Hero` avant qu'il ne se déplace
 
 
 > Pour "tester" le déplacement, tu peux simplement utiliser les touches de ton clavier. Le JS pour détecter les touches est déjà en place.
