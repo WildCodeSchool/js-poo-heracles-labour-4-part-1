@@ -1,8 +1,6 @@
-# Travaux d'Héraclès #4 : :horse: les juments de Diomède
+# Travaux d'Héraclès #4 : 🐴 les juments de Diomède
 
 Prérequis : cloner ce *repository*.
-
-Fais un `composer install`
 
 Le travail continue pour Héraclès. Il doit maintenant venir à bout des juments carnivores du roi Diomède.
 
@@ -10,19 +8,18 @@ Pour ce nouvel atelier, tu reprends là encore où tu t'étais arrêté à l'ét
 
 ## Monsters, Hero and Fighters
 
-Dans l'atelier précédent, tu as créé les classes `Hero` et `Monster` qui étendent tous deux `Fighter`.
+Dans l'atelier précédent, tu as créé les classes `Hero` et `Monster` qui étendent toutes deux de `Fighter`.
 
 
 ## Un peu de déplacement
 
 Les `Fighter` peuvent déjà se déplacer sur la carte en manipulant les propriétés x et y. Mais cela n'est pas très pratique à manipuler et ne propose pas un déplacement réaliste puisqu'il est possible de "téléporter" le combattant n'importe où.
 
-Tu vas créer maintenant une fonction `move()` qui permettra de déplacer un `Hero` d'une case à la fois, dans une direction donnée (nord, sud, est ou ouest).
+Tu vas donc créer une fonction `move()` qui permettra de déplacer un `Hero` d'une case à la fois, dans une direction donnée (nord, sud, est ou ouest).
 
 Créé cette méthode `move(direction)` dans la classe `Arena`.
 
-
-Le paramètre `direction` prendra obligatoire une des quatre valeurs `"N", "S", "W" ou "E"`. En fonction de la "lettre" récupérée, les coordonnées du héros devront être modifiées en conséquence.
+Le paramètre `direction` prendra obligatoirement une des quatre valeurs `"N", "S", "W" ou "E"`. En fonction de la "lettre" récupérée, les coordonnées du héros devront être modifiées en conséquence.
 
 > Par exemple, un mouvement vers le sud incrémente `y`, un mouvement vers l'ouest décrémente `x`, etc.
 
@@ -38,7 +35,7 @@ Attention, il faudra faire en sorte qu'il soit impossible de sortir de la carte,
 	- Pour cela il faudra créer 2 fonctions : 1 pour vérifier que la case où le `Hero` veut se déplacer est bien dans la carte
 	- Une autre pour vérifier si la case où le `Hero` veut se déplacer n'est pas déjà occupée
 
-- Si le déplacement n'est pas autorisé, il faudrait afficher un message différent pour une case occupée ou une sortie de carte. Pour cela ajoute une propriété "message" dans *Arena.js*. Le message d'erreur (de déplacement ou d'occupation) devra s'afficher dans un élément (déjà existant) ayant l'id 'error'. Il s'affichera dans un bloc d'erreur en haut à droite de la page.
+- Si le déplacement n'est pas autorisé, il faut afficher un message approprié pour une case occupée ou une sortie de carte. Pour cela ajoute une propriété "message" dans *Arena.js*. Le message d'erreur (de déplacement ou d'occupation) devra s'afficher dans un élément ayant l'id 'error' dans la page HTML. Cet élément existe déjà. Il suffit de le cibler avec un getElementById('error'). Le message s'affichera dans un bloc d'erreur en haut à droite de la page.
 
 - Si le déplacement est valide, modifie les coordonnées du `Hero` pour qu'il se déplace à sa destination.
 
