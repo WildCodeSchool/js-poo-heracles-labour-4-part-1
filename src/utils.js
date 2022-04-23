@@ -21,7 +21,6 @@ class FightersTemplate extends TemplateRoot {
   }
 
   createTemplate(hero, enemy) {
-    console.log(hero)
     const fighterTemplate = `<div class="fighters">
       <a href="#hero">
         <figure class="heracles">
@@ -50,7 +49,6 @@ class HeroInfoTemplate extends TemplateRoot {
   }
 
   createHeroInfoTemplate(hero) {
-    console.log(hero)
     const heroInfoTemplate = `<div class="hero" id="hero">
           <a href="#" class="close" onclick="closeModal()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
@@ -104,17 +102,26 @@ class ArenaTemplate extends TemplateRoot {
     let img = '';
     arena.monsters.forEach(monster => {
       if (monster.x === i && monster.y === j) {
-        img = `<img
-          title="Distance to ${arena.hero.name} ${arena.getDistance ? arena.getDistance(monster, arena.hero) : ""}"
-          alt="${monster.name}" src="${monster.image}"
-          class="monster ${arena.isTouchable ? (arena.isTouchable(arena.hero, monster) ? 'touchable' : 'untouchable') : ""}"
-        >`
+        img = this.makeMonsterImage(arena, monster)
       }
     })
+
     if (arena.hero.x === i && arena.hero.y === j) {
-      img = `<img title="Mon Hero, portée de ${arena.hero.getRange ? arena.hero.getRange() : ""}" alt="${arena.hero.name}" src="${arena.hero.image}" >`
+      img = this.makeHeroImage(arena)
     }
     return img;
+  }
+
+  makeHeroImage(arena) {
+    return `<img title="${arena.hero.name}, portée de ${arena.hero.getRange ? arena.hero.getRange() : ""}" alt="${arena.hero.name}" src="${arena.hero.image}" >`
+  }
+
+  makeMonsterImage(arena, monster) {
+    return `<img
+      title="Distance to ${arena.hero.name} ${arena.getDistance ? arena.getDistance(monster, arena.hero) : ""}"
+      alt="${monster.name}" src="${monster.image}"
+      class="monster ${arena.isTouchable ? (arena.isTouchable(arena.hero, monster) ? 'touchable' : 'untouchable') : ""}"
+    >`
   }
 
   createArena(arena) {
@@ -132,4 +139,28 @@ class ArenaTemplate extends TemplateRoot {
 
     this.render(arenaTemplate)
   }
+
+  setFightersPosition(arena, old){
+    document.getElementById(`pos${old.x}${old.y}`).innerHTML = ""
+    document.getElementById(`pos${arena.hero.x}${arena.hero.y}`).innerHTML = this.makeHeroImage(arena)
+
+    arena.monsters.forEach(monster => {
+      document.getElementById(`pos${monster.x}${monster.y}`).innerHTML = this.makeMonsterImage(arena, monster)
+    })
+  }
+
+  setMoveEvent(arena) {
+    document.addEventListener('keydown', (event) => {
+      const keyName = event.key;
+      const directions = { ArrowUp: 'N', ArrowDown: 'S', ArrowRight: 'E', ArrowLeft: 'W' };
+
+      if (keyName in directions) {
+          event.preventDefault();
+
+          const old = arena.move(directions[keyName])
+          this.setFightersPosition(arena, old)
+      }
+    });
+  }
 }
+

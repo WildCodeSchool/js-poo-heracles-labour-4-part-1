@@ -68,6 +68,21 @@ a:any-link {
     color: var(--dark);
 }
 
+#error:empty {
+    display: none;
+}
+
+#error {
+    background-color: var(--light);
+    color: var(--danger-color);
+    border-radius: 4px;
+    padding:var(--spacing);
+    margin:var(--spacing);
+    position:absolute;
+    top: var(--spacing);
+    right: var(--spacing);
+}
+
 /*** FIGHT **/
 
 .fighters {
@@ -157,7 +172,7 @@ a:any-link {
     display:flex;
     align-items: center;
     justify-content: space-between;
-    
+
     margin:auto;
     padding:var(--spacing);
     border:2px solid var(--ternary-color);
@@ -211,8 +226,8 @@ a:any-link {
 .slot {
     display:flex;
     justify-content: center;
-    align-items: center;   
-    background-color: rgba(0,0,0,0.3);    
+    align-items: center;
+    background-color: rgba(0,0,0,0.3);
     padding:var(--spacing);
     box-shadow: 2px 2px 2px inset var(--intermediate);
     position:relative;
@@ -258,7 +273,7 @@ a:any-link {
     height: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: center;  
+    align-items: center;
     flex-direction: column;
 }
 
@@ -330,7 +345,7 @@ button:hover {
     --fighter-rotate:-90deg;
     transform-origin: bottom;
     transform: translateZ(var(--anim-z, 0)) translateY(calc(var(--size) / -2)) rotateX(var(--fighter-rotate)) ;
-    width: 100%;  
+    width: 100%;
 
 }
 
@@ -348,13 +363,13 @@ button:hover {
 }
 
 @keyframes fly {
-    0% { 
+    0% {
         --anim-z:3px;
     }
     25% {
         --anim-z:7px;
-    }   
-    50% { 
+    }
+    50% {
         --anim-z:5px;
     }
     75% {

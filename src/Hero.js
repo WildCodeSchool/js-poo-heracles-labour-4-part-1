@@ -1,6 +1,6 @@
 class Hero extends Fighter {
-  constructor(name, strength, dexterity, image) {
-      super(name, strength, dexterity, image)
+  constructor(name, strength, dexterity, image, x, y, range) {
+      super(name, strength, dexterity, image, x, y, range)
       this.weapon = null;
       this.shield = null;
   }
@@ -9,17 +9,17 @@ class Hero extends Fighter {
   // Calculate the total attack capacity of the fighter
   // Calcule la capacité d'attaque totale du combattant
   getDamage() {
-    return this.weapon ?
-      this.strength + this.weapon.damage :
-      this.strength
+    return this.strength + (this.weapon ? this.weapon.damage : 0)
   }
 
 
   // Calculate the total defense capacity of the fighter
   // Calcule la capacité de défense totale du combattant
   getDefense() {
-    return this.shield ?
-      this.dexterity + this.shield.protection :
-      this.dexterity
+    return this.dexterity + (this.shield ? this.shield.protection : 0)
+  }
+
+  getRange() {
+    return this.range + (this.weapon ? this.weapon.range : 0)
   }
 }
