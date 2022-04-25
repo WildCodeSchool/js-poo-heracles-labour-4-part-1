@@ -112,10 +112,12 @@ class ArenaTemplate extends TemplateRoot {
     return img;
   }
 
+  // Build Hero Image
   makeHeroImage(arena) {
     return `<img title="${arena.hero.name}, portée de ${arena.hero.getRange ? arena.hero.getRange() : ""}" alt="${arena.hero.name}" src="${arena.hero.image}" >`
   }
 
+  // Build Monster Image
   makeMonsterImage(arena, monster) {
     return `<img
       title="Distance to ${arena.hero.name} ${arena.getDistance ? arena.getDistance(monster, arena.hero) : ""}"
@@ -140,6 +142,7 @@ class ArenaTemplate extends TemplateRoot {
     this.render(arenaTemplate)
   }
 
+  // Manage image display of moving fighters
   setFightersPosition(arena, old){
     document.getElementById(`pos${old.x}${old.y}`).innerHTML = ""
     document.getElementById(`pos${arena.hero.x}${arena.hero.y}`).innerHTML = this.makeHeroImage(arena)
@@ -149,6 +152,7 @@ class ArenaTemplate extends TemplateRoot {
     })
   }
 
+  // Keyboard events managment
   setMoveEvent(arena) {
     document.addEventListener('keydown', (event) => {
       const keyName = event.key;

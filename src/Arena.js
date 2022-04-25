@@ -12,4 +12,12 @@ class Arena {
   isTouchable(attacker, defender) {
     return this.getDistance(attacker, defender) <= attacker.getRange()
   }
+
+  // Hero movement managment
+  // Gestion du déplacement du héros
+  move(direction) {
+    /* Your code goes here */ 
+  
+    return oldPosition;
+  }
 }
