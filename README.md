@@ -10,33 +10,44 @@ For this new episode, you pick up where you left off in the previous step. You h
 In the previous workshop you created the `Hero` and `Monster` classes, both of them extends from `Fighter`.
 
 ## A little bit of movement
-A `Fighter` can already move around the map by manipulating the x and y properties. But this is not very convenient to manipulate and does not provide realistic movement since it is possible to "teleport" the fighter anywhere.
 
-So you are going to create a `move()` function that will allow you to move a `Hero` one square at a time, in a given direction (north, south, east or west).
+### What we are going to do
+The `Fighter` can already move around the map by manipulating the x and y properties. But this is not very convenient to manipulate and does not offer a realistic movement since it's possible to "teleport" the fighter anywhere.
 
-Create this `move(direction)` method in the `Arena` class.
+So you will create a `move()` function that will move a `Hero` one square at a time, in a given direction (north, south, east or west).
 
-The `direction` parameter will necessarily take one of the four values "N", "S", "E" or "W". Depending on the "letter" retrieved, the hero's coordinates will have to be modified accordingly.
+The `direction` parameter will take one of four values `"N", "S", "W" or "E"`. Depending on the "letter" retrieved, the hero's coordinates will have to be modified accordingly.
 
-> For example, a move to the south will increase y, a move to the west will decrease x, etc.
+> To test the move, you will use the keys of your keyboard. The JS to detect the keys is already in place. The direction parameter is automatically passed to the move() function
 
-Be careful, you must make it impossible to move off the map, but also impossible to move to a square already occupied by a `Monster`. To help you build this method, proceed as follows:
+You will also have to make it impossible to leave the map, but also impossible to move on a square already occupied by a `Monster`.
 
-- First, get the current coordinates of the Hero in the arena
 
-- Based on the direction, calculate the coordinates where the character *wants* to move to (but does not yet move).
+### Let's do it!
+To build all this, proceed as follows:
 
-- Check that these coordinates of destination correspond to an accessible square, i.e. that it is in the map and that it is free before being able to move it.
+- Create this `move(direction)` method in the `Arena` class.
+- First, get the current coordinates of the `Hero` of the arena in the form of a
 
-  - To do this, you need to create 2 functions: 1 to check that the square where the `Hero` wants to move is in the map
-  - Another to check if the square where the `Hero` wants to move is not already occupied
+```
+{
+	x: this.hero.x,
+	y: this.hero.y
+}
+```
+- Then, depending on the direction ("N", "S", "W" or "E"), calculate the coordinates where the character *wants* to move (**but doesn't yet**).
 
-- If the move is not authorized, an appropriate message must be displayed for an occupied square or a map exit. To do this you add a "message" property to *Arena.js*. The error message (for moving or occupying) should be displayed in an element with the id 'error' in the HTML page. This element already exists. You just have to target it with a getElementById('error'). The message will be displayed in an error block at the top right of the page.
+> We'll assume that a move to the south increments `y`, a move to the west decrements `x`, etc.
+
+- Check that these destination coordinates correspond to an accessible cell, i.e. is in the map and that is free before you can move it. To do this, 2 functions must be created:
+
+	- One to check that the square where the `Hero` wants to move is in the map
+	- Another one to check if the square where the `Hero` wants to move is not already occupied
+
+- If the move is not allowed, a different message must be displayed for an occupied square or a map exit. To do this add a "message" property to *Arena.js*. The error message (of displacement or occupation) will have to be displayed in an element having the id 'error' in the HTML page. This element already exists. You just have to target it with a `getElementById('error')` and modify its `innerText`. The message will be displayed in an error block at the top right of the page.
 
 - If the move is valid, change the coordinates of the `Hero` so that it moves to its destination.
 
-- The `move()` function **must** return the old coordinates of the `Hero`, i.e. the coordinates of the `Hero` before it moved
+- The `move()` function must __necessarily__ return the old coordinates of the `Hero`, i.e. the coordinates of the `Hero` before it moved, retrieved at the very beginning of the function.
 
-> To "test" the move, you can simply use the keys on your keyboard. The JS to detect the keys is already in place.
-
-Your character is moving, that's good! Normally, the concept of range (depending on the weapon the hero is carrying) is still functional and the monsters should grey out or not depending on the distance. You can have fun changing Heracles' weapon if you want.
+Test the movement with the keys of your keyboard. Your character is moving, well done! Normally, the notion of range (depending on the weapon the hero is carrying) is always functional and the monsters should grey out or not depending on the distance. You can have fun changing the weapon of Heracles if you want.

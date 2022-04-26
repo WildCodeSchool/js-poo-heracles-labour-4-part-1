@@ -114,7 +114,7 @@ class ArenaTemplate extends TemplateRoot {
 
   // Build Hero Image
   makeHeroImage(arena) {
-    return `<img title="${arena.hero.name}, portée de ${arena.hero.getRange ? arena.hero.getRange() : ""}" alt="${arena.hero.name}" src="${arena.hero.image}" >`
+    return `<img title="${arena.hero.name}, portée de ${arena.hero.getRange ? arena.hero.getRange() : ""}" alt="${arena.hero.name}" src="${arena.hero.image}" >`;
   }
 
   // Build Monster Image
@@ -123,7 +123,7 @@ class ArenaTemplate extends TemplateRoot {
       title="Distance to ${arena.hero.name} ${arena.getDistance ? arena.getDistance(monster, arena.hero) : ""}"
       alt="${monster.name}" src="${monster.image}"
       class="monster ${arena.isTouchable ? (arena.isTouchable(arena.hero, monster) ? 'touchable' : 'untouchable') : ""}"
-    >`
+    >`;
   }
 
   createArena(arena) {
@@ -144,12 +144,12 @@ class ArenaTemplate extends TemplateRoot {
 
   // Manage image display of moving fighters
   setFightersPosition(arena, old){
-    document.getElementById(`pos${old.x}${old.y}`).innerHTML = ""
-    document.getElementById(`pos${arena.hero.x}${arena.hero.y}`).innerHTML = this.makeHeroImage(arena)
+    document.getElementById(`pos${old.x}${old.y}`).innerHTML = "";
+    document.getElementById(`pos${arena.hero.x}${arena.hero.y}`).innerHTML = this.makeHeroImage(arena);
 
     arena.monsters.forEach(monster => {
-      document.getElementById(`pos${monster.x}${monster.y}`).innerHTML = this.makeMonsterImage(arena, monster)
-    })
+      document.getElementById(`pos${monster.x}${monster.y}`).innerHTML = this.makeMonsterImage(arena, monster);
+    });
   }
 
   // Keyboard events managment
@@ -161,8 +161,8 @@ class ArenaTemplate extends TemplateRoot {
       if (keyName in directions) {
           event.preventDefault();
 
-          const old = arena.move(directions[keyName])
-          this.setFightersPosition(arena, old)
+          const old = arena.move(directions[keyName]);
+          this.setFightersPosition(arena, old);
       }
     });
   }
