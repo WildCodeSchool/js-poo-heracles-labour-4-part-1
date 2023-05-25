@@ -42,7 +42,7 @@ Pour construire tout ça, procède de la sorte :
 
 - Ensuite, en fonction de la direction ("N", "S", "W" ou "E"), calcule les coordonnées où le personnage *souhaite* se déplacer (**mais ne le déplace pas encore**).
 
-> On considera qu'un mouvement vers le sud incrémente `y`, un mouvement vers l'ouest décrémente `x`, etc.
+> On considera qu'un mouvement vers le sud incrémente `y`, un mouvement vers l'est décrémente `x`, etc.
 
 - Vérifie que ces coordonnées de destination correspondent à une case accessible, c'est à dire qu'elle est dans la carte et qu'elle est libre avant de pouvoir le déplacer. Pour cela il faudra créer 2 fonctions :
 

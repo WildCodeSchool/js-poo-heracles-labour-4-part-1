@@ -37,7 +37,7 @@ To build all this, proceed as follows:
 ```
 - Then, depending on the direction ("N", "S", "W" or "E"), calculate the coordinates where the character *wants* to move (**but doesn't yet**).
 
-> We'll assume that a move to the south increments `y`, a move to the west decrements `x`, etc.
+> We'll assume that a move to the south increments `y`, a move to the est decrements `x`, etc.
 
 - Check that these destination coordinates correspond to an accessible cell, i.e. is in the map and that is free before you can move it. To do this, 2 functions must be created:
 
